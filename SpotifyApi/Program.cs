@@ -72,9 +72,11 @@ public class SpotifyAddToQueue
     private async Task AddSongToQueueAsync(string trackUri)
     {
         var queueUrl = $"https://api.spotify.com/v1/me/player/queue?uri={Uri.EscapeDataString(trackUri)}";
-        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-        var response = await httpClient.PostAsync(queueUrl, null);
+        var request = new HttpRequestMessage(HttpMethod.Post, queueUrl);
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+        var response = await httpClient.SendAsync(request);
         var responseBody = await response.Content.ReadAsStringAsync();
 
         if (response.StatusCode == HttpStatusCode.NoContent || response.StatusCode == HttpStatusCode.OK)
