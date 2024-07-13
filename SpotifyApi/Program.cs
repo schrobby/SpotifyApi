@@ -8,8 +8,8 @@ namespace SpotifyApi;
 
 public class SpotifyAddToQueue
 {
-    private const string ClientId = "9e820302808d461d809729d2a591aa0d";
-    private const string ClientSecret = "37dfe25bbf8749f098307896258310fe";
+    private const string ClientId = "client_id";
+    private const string ClientSecret = "client_secret";
     private const string RedirectUri = "http://localhost:8080/callback";
     private string accessToken = "";
 
